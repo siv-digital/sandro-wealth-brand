@@ -1,0 +1,15 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor / tooling
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local config (not part of the skill)
+.claude/
+
+# Python
+__pycache__/
+*.pyc
