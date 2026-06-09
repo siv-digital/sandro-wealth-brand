@@ -4,23 +4,35 @@ A [Claude Code](https://claude.com/claude-code) Agent Skill that teaches Claude 
 
 Once installed, Claude will use this skill whenever you ask it to design, draft, or build anything for Sandro Wealth: social graphics, slide decks, one-pagers, flyers, web pages, HTML emails, landing pages, or brochures.
 
+When you start a build, the skill first asks **what you're building** — a PowerPoint/deck or a non-PowerPoint asset — and routes accordingly. Decks are built from a bundled, pre-designed PowerPoint template; web/social/email assets use the brand's web typography and embedded fonts.
+
 ## What's inside
 
 ```
 sandro-wealth-brand/
-├── SKILL.md                  ← the skill (brand fundamentals, voice, compliance rules)
+├── SKILL.md                  ← the skill (brand fundamentals, voice, compliance rules, build routing)
 ├── references/
 │   ├── brand-spec.md         ← full color/type/logo spec + firm positioning
 │   ├── voice.md              ← voice guide with on-brand / off-brand copy examples
-│   └── asset-playbook.md     ← per-asset-type layout norms, dimensions, dos & don'ts
+│   ├── asset-playbook.md     ← per-asset-type layout norms, dimensions, dos & don'ts
+│   └── deck-spec.md          ← PowerPoint format authority: template layouts, data-viz palette, deck fonts
 ├── scripts/
 │   └── embed_fonts.py        ← emits a ready-to-paste @font-face <style> block (base64-embedded fonts)
 └── assets/
-    ├── fonts/                ← Libre Baskerville + DM Sans (the real .ttf files)
-    └── logos/               ← official sunburst logo lockups & symbols (10 SVG variants)
+    ├── fonts/                ← Libre Baskerville + DM Sans (the real .ttf files, for web/social)
+    ├── logos/                ← official sunburst logo lockups & symbols (10 SVG variants)
+    └── templates/
+        └── sandro-deck-template.pptx  ← pre-designed 16:9 PowerPoint template (decks build from this)
 ```
 
-The fonts and logos are bundled directly, so assets render correctly with **no network access** required.
+The fonts, logos, and deck template are bundled directly, so assets render correctly with **no network access** required.
+
+## Two build paths
+
+| You ask for… | The skill… |
+|---|---|
+| A **PowerPoint / deck / presentation** | Builds from `assets/templates/sandro-deck-template.pptx` per `references/deck-spec.md`, using the template's native fonts (Georgia + Inter/DM Sans). Decks are never rebuilt from scratch. |
+| Anything **else** (social, web/HTML, email, landing page, one-pager) | Applies the brand color + type tokens, embeds Libre Baskerville + DM Sans, and pulls the right logo variant for the background. |
 
 ## Installation
 

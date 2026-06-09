@@ -33,17 +33,17 @@ Don'ts:
 
 ## Slide decks
 
-Use the `pptx` skill to produce .pptx. Apply tokens.
-
-- **Title slide:** Titanium ground, centered or left logo lockup, Baskerville Bold title, DM Sans subtitle.
-- **Content slides:** Off-White ground, Titanium headings (Baskerville), DM Sans body. Lots of margin.
-- **Section dividers:** Titanium ground with the sunburst symbol large/faint behind a Baskerville section title.
-- **Data:** DM Sans labels; use the gradient for a single highlighted series, Grey/Titanium for the rest.
-- Footer: small DM Sans, page number + `[DISCLOSURE: ...]` placeholder where claims appear.
+**Build from the bundled template — see `references/deck-spec.md`.** Decks are produced by
+copying and populating `assets/templates/sandro-deck-template.pptx`, not built from scratch
+and not styled with the web tokens. The template ships the title, divider, content (1–3
+column, content+panel), stat-callout, and quad layouts, the asset-class data-viz palette, an
+icon library, and the "professional use only / not for distribution" footer. The deck-spec is
+the authority for fonts (Georgia + Inter/DM Sans, template-native), layout selection, and
+chart color-coding. Do not use `frontend-design` for decks.
 
 ## One-pagers
 
-HTML (print-friendly) or .pptx single slide / .docx via `docx` skill if you want Word.
+HTML (print-friendly) or .docx via `docx` skill if you want Word. (For a single-slide PPTX one-pager, use the deck template — see `references/deck-spec.md`.)
 
 - Header band in Titanium with logo lockup (ivory/offwhite variant).
 - Body on Off-White: Baskerville H2s, DM Sans body, generous leading.

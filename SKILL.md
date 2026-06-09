@@ -11,11 +11,19 @@ The brand exists in a regulated category. Getting the *look* right is half the j
 
 ## How to use this skill
 
-1. **Identify the asset type and surface.** Social graphic, deck, one-pager, web/HTML, email. Each has layout norms — see `references/asset-playbook.md`.
+0. **Ask up front what's being built — always.** Before doing anything else, ask the user to declare the asset type and surface so the build routes correctly. Ask this every time, even if the request seems to name the asset already:
+
+   > "What are we building? (a) a **PowerPoint / deck / presentation**, or (b) a **non-PowerPoint asset** — social graphic, web/HTML, landing page, email, or one-pager?"
+
+   Then route:
+   - **(a) PowerPoint / deck / presentation →** This is the **template path.** Build by copying and populating the bundled template per `references/deck-spec.md` + `assets/templates/sandro-deck-template.pptx`. Use the `pptx` skill for file mechanics, but the design comes from the template. **Do NOT use `frontend-design`, and do NOT force the Baskerville/DM Sans web fonts — the deck is built in its own template-native fonts (Georgia + Inter/DM Sans).**
+   - **(b) Non-PowerPoint asset →** Continue with steps 1–5 below. Consult `frontend-design` for execution hygiene on web/HTML/social.
+
+1. **Identify the asset type and surface.** Social graphic, one-pager, web/HTML, email. Each has layout norms — see `references/asset-playbook.md`. (Decks are handled via the template path in step 0.)
 2. **Load the brand fundamentals below** (colors, type, logo rules) — these are non-negotiable and apply to every asset.
 3. **Pull the correct logo file** from `assets/logos/` based on the background (see Logo usage).
 4. **Check the copy against the compliance guardrails** before finalizing. This is a do-not-generate list, not a disclaimer step — your compliance/legal team handles formal compliance review.
-5. **Build the asset.** For web/HTML and decks, also consult the `frontend-design` skill for execution quality, but the brand tokens here override any generic styling guidance.
+5. **Build the asset.** For web/HTML, also consult the `frontend-design` skill for execution quality, but the brand tokens here override any generic styling guidance.
 
 ## Brand fundamentals (apply to every asset)
 
@@ -43,6 +51,7 @@ The brand exists in a regulated category. Getting the *look* right is half the j
 | **DM Sans** | Regular | Body copy, UI, captions, labels, fine print. | Google Fonts (free) |
 
 **Rules:**
+- **Scope:** this Baskerville + DM Sans pairing applies to **web, social, HTML, email, and one-pagers**. It does NOT apply to **PowerPoint decks** — those use the template-native fonts (Georgia + Inter/DM Sans) per `references/deck-spec.md`. Don't force Baskerville into a deck.
 - Headlines and big statements → **Libre Baskerville**. It carries the institutional, old-money gravitas.
 - Everything functional (paragraphs, buttons, captions, data) → **DM Sans**. Clean, neutral, legible.
 - Never set body copy in Baskerville at small sizes — it gets fussy. Baskerville for impact, DM Sans for reading.
@@ -111,7 +120,8 @@ When an asset would normally carry a disclosure (ads, anything making a claim), 
 
 - **Render at 2× resolution.** When rasterizing any HTML/SVG asset to PNG (e.g., via Playwright screenshot), always set `device_scale_factor=2` (or width 2× the target and downscale). Rendering at 1× produces grainy, soft type that looks low-quality and off-brand. This is the single most common quality failure — do not skip it.
 - **Social graphics**: deliver as standalone HTML/SVG artifacts at the right dimensions (LinkedIn post 1200×1200 or 1200×627; story 1080×1920). Embed the logo SVG inline.
-- **Decks / one-pagers**: use the `pptx` skill for .pptx, or HTML for a one-pager. Apply the palette and type tokens above.
+- **Decks / presentations (.pptx)**: build from the bundled template — see `references/deck-spec.md` and `assets/templates/sandro-deck-template.pptx`. The deck is built in its template-native fonts (Georgia + Inter/DM Sans), NOT the Baskerville/DM Sans web pairing. Do not rebuild decks from scratch or apply the web tokens to them.
+- **One-pagers**: HTML for a one-pager, or .docx via `docx` skill if you want Word. Apply the palette and type tokens above.
 - **Web / HTML / email**: working code, fonts via Google Fonts, brand tokens as CSS variables. Consult `frontend-design` for polish; brand tokens here win on any conflict.
 - Set up brand tokens as variables at the top of any build:
   ```css
@@ -126,6 +136,7 @@ When an asset would normally carry a disclosure (ads, anything making a claim), 
 
 ## Reference files
 
-- `references/asset-playbook.md` — per-asset-type layout norms, dimensions, and dos/don'ts (social, deck, one-pager, web, email).
+- `references/deck-spec.md` — **PowerPoint format authority.** Template layouts, the asset-class data-viz palette, footer/font conventions, and the build-from-template rule. Use for all .pptx work.
+- `references/asset-playbook.md` — per-asset-type layout norms, dimensions, and dos/don'ts (social, one-pager, web, email).
 - `references/voice.md` — expanded voice guide with on-brand / off-brand copy examples.
 - `references/brand-spec.md` — full color/type/logo spec for lookup, plus the firm positioning summary.
