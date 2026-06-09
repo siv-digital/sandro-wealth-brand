@@ -97,4 +97,4 @@ Sandro Wealth is an SEC-registered investment adviser. This skill is built to **
 
 ---
 
-*Maintained by [SIV Digital](https://sivdigital.com). Brand assets © Sandro Wealth Management.*
+*Brand assets © Sandro Wealth Management.*
